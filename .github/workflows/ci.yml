@@ -46,3 +46,13 @@ jobs:
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
           # Now run it
           $(go env GOPATH)/bin/staticcheck ./...
+
+      - name: Install gosec
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+
+      - name: Run gosec
+        run: |
+          # Add the Go bin directory to the PATH for subsequent steps
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+          # Now run it
+          $(go env GOPATH)/bin/gosec ./...
