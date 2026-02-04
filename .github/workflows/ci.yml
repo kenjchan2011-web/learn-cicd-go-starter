@@ -21,5 +21,5 @@ jobs:
       - name: Test api
         run: go test ./...
 
-      - name: Failure case
-        run: (exit 1)
+      #- name: Failure case
+      #  run: (exit 1)
