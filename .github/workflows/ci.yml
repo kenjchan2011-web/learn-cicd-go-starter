@@ -18,5 +18,8 @@ jobs:
         with:
           go-version: "1.25.1"
 
-      - name: Display Go version
-        run: go version
+      - name: Test api
+        run: go test ./...
+
+      - name: Failure case
+        run: (exit 1)
