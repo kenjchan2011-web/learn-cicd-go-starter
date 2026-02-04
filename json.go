@@ -30,5 +30,9 @@ func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 		return
 	}
 	w.WriteHeader(code)
-	w.Write(dat)
+	//w.Write(dat)
+	if err := json.NewEncoder(w).Encode(payload); err != nil {
+        log.Printf("Error encoding JSON: %s", err)
+        // Note: You can't change the status code here because WriteHeader was already called
+    }
 }
