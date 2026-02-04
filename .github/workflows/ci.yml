@@ -41,4 +41,8 @@ jobs:
         run: test -z $(go fmt ./...)
 
       - name: Run staticcheck
-        run: staticcheck ./...
+        run: |
+          # Add the Go bin directory to the PATH for subsequent steps
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+          # Now run it
+          $(go env GOPATH)/bin/staticcheck ./...
